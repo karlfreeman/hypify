@@ -1,0 +1,18 @@
+{
+        "BundleType": "Application",
+        "AppIcon": {
+                "18x18": "18x18.png",
+                "36x18": "36x18.png"
+        },
+        "AppName": {
+                "en": "Hypify"
+        },
+        "SupportedLanguages": [
+                "en"
+        ],
+        "RequiredPermissions": [
+                "http://*.echonest.com",
+                "http://*.hypem.com",
+                "http://*.spotify.com"
+        ]
+}

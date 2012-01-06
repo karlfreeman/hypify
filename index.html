@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hypify</title>
+    <link rel="stylesheet" href="sp://import/css/shared.css">
+    <link rel="stylesheet" href="sp://import/css/api.css">
+    <link rel="stylesheet" href="sp://import/css/eve.css">
+
+    <script type="text/javascript" src="jquery-1.7.1.js"></script>
+</head>
+    <body>
+
+    <!--
+    <button class="add-playlist button icon" value="spotify:album:0fqSVcXza5It71LS2BJdLR"><span class="plus"></span>Add as Playlist</button><br />
+    <br />
+    <button class="add-playlist button icon" value="spotify:album:0fqSVcXza5It71LS2BJdLR"><span class="share"></span>Share me</button>
+    <br />
+    <button class="new-button">Another shiny button with random text!</a>
+    -->
+
+    <div class="sp-player sp-player-paused" tabindex="0">
+        <div class="sp-player-image">
+            <a href="spotify:internal:temp_playlist:spotify:app:kitchensink@422700575702" title="spotify:app:kitchensink@422700575702" class="sp-image sp-image-loaded" tabindex="-1" style="background-image: -webkit-canvas(cover-351194); "></a>
+        </div>
+        <button class="sp-player-button"></button>
+        <button id="savePlaylist" class="add-playlist button icon">Save As Playlist</button>
+    </div>
+
+    <script type="text/javascript">
+        // get the standard spotify api
+        var sp = getSpotifyApi(1);
+        // get the spotify models
+        var m = sp.require('sp://import/scripts/api/models');
+    </script>
+    </body>
+</html>
