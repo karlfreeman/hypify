@@ -8,19 +8,25 @@
 	<link rel="stylesheet" href="css/dots.css">
 	<link rel="stylesheet" href="css/main.css">
 	<script type="text/javascript" src="js/jquery-1.7.1.js"></script>
+	<script type="text/javascript" src="js/parse.js"></script>
+	<script type="text/javascript" src="js/string-compare.js"></script>
 </head>
 	<body>
 
 	<header>
-		<div id="logo">
+		<div class="logo">
 			<h1>Hypify</h1>
 			<img alt="Hypify" src="img/header-logo.png">
 		</div>
 	</header>
 
-	  <span class="dots">
-        <span>Loading</span><span>…</span>
+	<div id="search-results"></div>
+
+	<!--
+	<span class="dots">
+		<span>Loading</span><span>…</span>
     </span>
+    -->
 
 	<footer></footer>
 
@@ -42,11 +48,5 @@
 	</div>
 	-->
 
-	<script type="text/javascript">
-		// get the standard spotify api
-		var sp = getSpotifyApi(1);
-		// get the spotify models
-		var m = sp.require('sp://import/scripts/api/models');
-	</script>
 	</body>
 </html>

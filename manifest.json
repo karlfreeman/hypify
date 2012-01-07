@@ -10,7 +10,7 @@
 		"en"
 	],
 	"RequiredPermissions": [
-		"http://*.hypem.com",
+		"http://hypem.com",
 		"http://*.spotify.com"
 	]
 }
