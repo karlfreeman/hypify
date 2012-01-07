@@ -1,17 +1,16 @@
 {
-        "BundleType": "Application",
-        "AppIcon": {
-                "18x18": "img/18x18.png",
-                "36x18": "img/36x18.png"
-        },
-        "AppName": {
-                "en": "Hypify"
-        },
-        "SupportedLanguages": [
-                "en"
-        ],
-        "RequiredPermissions": [
-                "http://*.hypem.com",
-                "http://*.spotify.com"
-        ]
+	"BundleType": "Application",
+	"AppIcon": {
+		"36x18": "img/36x18.png"
+	},
+	"AppName": {
+		"en": "Hypify"
+	},
+	"SupportedLanguages": [
+		"en"
+	],
+	"RequiredPermissions": [
+		"http://*.hypem.com",
+		"http://*.spotify.com"
+	]
 }
