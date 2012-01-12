@@ -1,14 +1,25 @@
 $(window).load(function() {
 
-	// get the standard spotify api
+	// Standard spotify api
 	var sp = getSpotifyApi(1);
 
-	// get the spotify models
+	// Spotify models
 	var m = sp.require('sp://import/scripts/api/models');
+	var v = sp.require("sp://import/scripts/api/views");
+	var ui = sp.require("sp://import/scripts/ui");
 
-	//
+	// User details
 	var username = "KarlFreeman";
 	var pagination = "1";
+
+	$('.username-prompt').html(sp.core.user.username);
+	$('.username-nudge').animate({opacity: 1}, 2500);
+
+	/*
+	console.log(sp.core);
+	console.log(sp.trackPlayer);
+	console.log(sp.social);
+	*/
 
 	function searchHypem(username,pagination) {
 
@@ -87,7 +98,7 @@ $(window).load(function() {
 
 					if (trackresult === null) {
 
-						// $("#search-results").append("<div>No results for '" + trackquery + " by " + artistquery + "'</div>");
+						$("#failed-results").append("<div>No results for '" + trackquery + " by " + artistquery + "'</div>");
 
 					} else {
 
@@ -97,7 +108,7 @@ $(window).load(function() {
 
 				} else {
 
-					// $("#search-results").append("<div>No results for '" + trackquery + " by " + artistquery + "'</div>");
+					$("#failed-results").append("<div>No results for '" + trackquery + " by " + artistquery + "'</div>");
 
 				}
 			}
@@ -106,6 +117,6 @@ $(window).load(function() {
 
 	}
 
-	searchHypem(username,1);
+	// searchHypem(username,1);
 
 });

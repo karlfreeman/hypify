@@ -3,6 +3,11 @@
 	"AppIcon": {
 		"36x18": "img/36x18.png"
 	},
+	"ApiPermissions" : {
+		"core" : ["private"],
+		"social" : ["private"],
+		"playlist" : ["private"]
+	},
 	"AppName": {
 		"en": "Hypify"
 	},
@@ -11,6 +16,8 @@
 	],
 	"RequiredPermissions": [
 		"http://hypem.com",
-		"http://*.spotify.com"
+		"http://*.spotify.com",
+		"https://fbcdn-profile-*.akamaihd.net",
+		"http://*.fbcdn.net"
 	]
 }

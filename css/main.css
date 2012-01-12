@@ -1,3 +1,12 @@
+@import url("sp://import/css/api.css");
+@import url("sp://import/css/eve.css");
+
+body {
+	min-height: 100%;
+	box-sizing: border-box;
+	background-image: url(../img/view-bg-tile-dark.png); background-repeat: repeat;
+}
+
 header {
 	background-image: linear-gradient(bottom, rgb(101,159,13) 1%, rgb(131,196,65) 76%);
 	background-image: -o-linear-gradient(bottom, rgb(101,159,13) 1%, rgb(131,196,65) 76%);
@@ -18,6 +27,7 @@ header {
         	  box-shadow: 0px 0px 4px #000;
 
 	height:60px;
+	display:none;
 
 }
 
@@ -44,6 +54,94 @@ header h1 {
 header img {
 	height:50px;
 	float:left;
+}
+
+/*
+
+Submit Form
+
+*/
+
+form {
+	position:fixed; top:50%;
+    left:50%;
+    width:515px;
+    height:250px;
+    margin-left:-257.5px;
+    margin-top:-125px;
+}
+
+form .logo {
+	float:left;
+	padding-right:50px;
+}
+
+form .fields
+{
+	padding-top:50px;
+}
+
+form .submit {
+	float:right;
+	margin-top:10px;
+}
+
+form .username-nudge {
+	text-align: center;
+	margin-top:50px;
+	color: #666;
+	text-shadow: 0 1px #000;
+}
+
+form .username-prompt {
+	cursor: pointer;
+	color: #EEE;
+	text-shadow: 0 1px #000;
+	text-decoration: none;
+	border-bottom:1px solid #303d0a;
+}
+
+label, input
+{
+	display: block;
+}
+
+input
+{
+	background: #FFF;
+	border: 1px solid #7eab00;
+	border-radius: 3px;
+	color: #a7a8a8;
+	padding: 10px;
+	width: 280px;
+}
+
+input:focus
+{
+	color: #444;
+}
+
+input[type=submit]
+{
+	background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #255a00), color-stop(1, #7eab00));
+	border-color: #618400;
+	border-bottom-color: #255a00;
+	color: #EEE;
+	cursor: pointer;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 6px 20px;
+	text-shadow: 0 1px #000;
+	width: 302px;
+}
+
+input[type=submit]:active
+{
+	background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #155a00), color-stop(1, #618400));
+	border-color: #235000;
+	border-bottom-color: #365b2b;
+	color: #EEE;
+	text-shadow: 0 -1px #255a00;
 }
 
 footer {
