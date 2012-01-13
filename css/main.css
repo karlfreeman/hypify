@@ -62,7 +62,7 @@ Submit Form
 
 */
 
-form {
+.form {
 	position:fixed; top:50%;
     left:50%;
     width:515px;
@@ -71,29 +71,29 @@ form {
     margin-top:-125px;
 }
 
-form .logo {
+.form .logo {
 	float:left;
 	padding-right:50px;
 }
 
-form .fields
+.form .fields
 {
 	padding-top:50px;
 }
 
-form .submit {
+.form .submit {
 	float:right;
 	margin-top:10px;
 }
 
-form .username-nudge {
+.form .username-nudge {
 	text-align: center;
 	margin-top:50px;
 	color: #666;
 	text-shadow: 0 1px #000;
 }
 
-form .username-prompt {
+.form .username-prompt {
 	cursor: pointer;
 	color: #EEE;
 	text-shadow: 0 1px #000;

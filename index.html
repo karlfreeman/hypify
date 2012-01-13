@@ -4,10 +4,9 @@
 	<title>Hypify</title>
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/intro.css">
-	<script type="text/javascript" src="js/jquery-1.7.1.js"></script>
-	<script type="text/javascript" src="js/jquery.transit.js"></script>
-	<script type="text/javascript" src="js/string-compare.js"></script>
-	<script type="text/javascript" src="js/parse.js"></script>
+	<script type="text/javascript" src="js/libs/jquery-1.7.1.js"></script>
+	<script type="text/javascript" src="js/libs/jquery.transit.js"></script>
+	<script type="text/javascript" src="js/libs/string-compare.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 </head>
 	<body>
@@ -29,17 +28,17 @@
 
 	<div id="wrapper">
 
-		<form method="post">
+		<div class="form">
 			<div class="logo">
 				<img alt="Hypify" src="img/hypify-logo-h.png">
 			</div>
 			<div class="fields">
-				<input type="text" name="username" id="username" autofocus="true" placeholder="Username">
+				<input type="text" class="username" name="username" id="username" autofocus="true" placeholder="Username">
 				<input class="submit" type="submit" value="Find Hypem Username">
 				<p class="username-nudge">is your hypem username <a class="username-prompt"></a> ?</p>
 				
 			</div>
-		</form>
+		</div>
 
 		<section id="failed-results"/>
 		<section id="search-results"/>
