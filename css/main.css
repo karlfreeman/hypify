@@ -8,26 +8,10 @@ body {
 }
 
 header {
-	background-image: linear-gradient(bottom, rgb(101,159,13) 1%, rgb(131,196,65) 76%);
-	background-image: -o-linear-gradient(bottom, rgb(101,159,13) 1%, rgb(131,196,65) 76%);
-	background-image: -moz-linear-gradient(bottom, rgb(101,159,13) 1%, rgb(131,196,65) 76%);
-	background-image: -webkit-linear-gradient(bottom, rgb(101,159,13) 1%, rgb(131,196,65) 76%);
-	background-image: -ms-linear-gradient(bottom, rgb(101,159,13) 1%, rgb(131,196,65) 76%);
-
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0.01, rgb(101,159,13)),
-		color-stop(0.76, rgb(131,196,65))
-	);
-
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #255a00), color-stop(1, #7eab00));
 	-webkit-box-shadow: 0px 0px 4px #000;
-    	 -moz-box-shadow: 0px 0px 4px #000;
-        	  box-shadow: 0px 0px 4px #000;
-
 	height:60px;
-	display:none;
+	
 
 }
 
@@ -35,7 +19,7 @@ header {
 	text-align:center;
 }
 
-header .logo {
+header .header-logo {
 	padding-top:5px;
 	margin-left: auto;
 	margin-right: auto;
@@ -56,6 +40,9 @@ header img {
 	float:left;
 }
 
+.wrapper {
+}
+
 /*
 
 Submit Form
@@ -67,8 +54,8 @@ Submit Form
     left:50%;
     width:515px;
     height:250px;
-    margin-left:-257.5px;
-    margin-top:-125px;
+    margin-left:-275px;
+    margin-top:-100px;
 }
 
 .form .logo {
@@ -142,6 +129,8 @@ input[type=submit]:active
 	border-bottom-color: #365b2b;
 	color: #EEE;
 	text-shadow: 0 -1px #255a00;
+}
+
 }
 
 footer {

@@ -1,9 +1,11 @@
-
 //
 $(document).ready(function() {
 
+	$('header').
+		css({ y: '-60px' });
+
 	$('.logo').
-		css({ x: '200px' }).
+		css({ x: '190px' }).
 		transition({ x: 0, delay: 800 }, 500, 'in-out');
 
 	$('.fields').
@@ -11,6 +13,7 @@ $(document).ready(function() {
 		transition({ opacity: 1, delay:1000 }, 600, 'in-out');
 
 });
+
 
 //
 $(window).load(function() {
@@ -24,23 +27,116 @@ $(window).load(function() {
 	var ui = sp.require("sp://import/scripts/ui");
 
 	// User details
-	var username = "KarlFreeman";
-	var pagination = "1";
+	var username = "";
+	var pagination = 1;
 
+	// Defaults
 	$('.username-prompt').html(sp.core.user.username);
-	$('.username-nudge').animate({opacity: 1}, 2500);
+	$('.form .username-prompt').live('click', usernamePromt);
 
-	$('.form .submit').live('click', function() {
-		submitForm();
-	});
-	
-	$('.form .username-prompt').live('click', function() {
-		$('.form .username').val($('.form .username-prompt').text());
-		submitForm();
+	// Overwrite the form's post with some validation
+	$('.form').submit(function () {
+
+		if( $('.form .username').val() !== "" ){
+			submitForm();
+		} else {
+			alert("Message Cannot be empty");
+		}
+
+		return false;
 	});
 
 	function submitForm() {
+
+		//Lets keep hold of this for later
+		username = $('.form .username').val();
+
+		// Disable the form from multiple submissions ( and visually )
+		disableForm();
+
+		// Go go, gadet $.ajax
+		$.ajax({
+			type: 'GET',
+			url: 'http://hypem.com/'+ username +'/?ax=1',
+			dataType: 'html'
+		})
+		.success(function(data, textStatus, xhr) {
+
+			// Success, lets parse away
+			if (xhr.status == 200)  {
+				usernameFound();
+			// Just in case of any 302's
+			} else {
+				enableForm();
+			}
+
+		})
+		.error(function(data, textStatus, xhr) {
+
+			// Woah, there. Lets make sure there isn't a typo in the username
+			enableForm();
+
+		});
+
+	}
+
+	function usernamePromt() {
+
+		$('.form .username').val($('.form .username-prompt').text());
+		submitForm();
+
+	}
+
+	function disableForm() {
+
+		$('.form .username').attr('disabled', 'disabled');
+		$('.form .username').attr('selectable', 'true');
+		$('.form .username').css('-webkit-user-select', 'none');
+		$('.form .submit').attr('disabled', 'disabled');
+		$('.form .username-prompt').die('click', usernamePromt);
+		$('.fields').transition({ opacity: 0.5 }, 400, 'in-out');
+	}
+
+	function enableForm() {
+
+		$('.form .username').removeAttr('disabled');
+		$('.form .username').removeAttr('selectable');
+		$('.form .username').css('-webkit-user-select', '');
+		$('.form .submit').removeAttr('disabled');
+		$('.form .username-prompt').live('click', usernamePromt);
+		$('.fields').transition({ opacity: 1 }, 400, 'in-out');
 		
+	}
+
+	function usernameFound() {
+
+		$('.fields').
+			transition({ opacity: 0 }, 400, 'in-out').
+			transition({ display: 'none', delay: 10 }, 400);
+
+
+		$('.logo').
+			transition({ x: 190, delay: 300 }, 400, 'in-out').
+			transition({ opacity: 0, delay: 100 }, 400, 'in-out').
+			transition({ display: 'none', delay: 10 }, 400);
+		
+
+		$('.loading').
+			transition({ opacity: 1, delay: 1200 }, 200, 'in-out', function() {
+				searchHypem();
+			});
+			
+		$('header').
+			transition({ y: 0, delay: 1200 }, 400, 'in-out');
+		
+	}
+
+	function hideLoading() {
+		
+		$('.loading').
+			transition({ opacity: 0 }, 400, 'in-out').
+			transition({ display: 'none', delay: 10 }, 400);
+
 	}
 
 	/*
@@ -49,7 +145,9 @@ $(window).load(function() {
 	console.log(sp.social);
 	*/
 
-	function searchHypem(username,pagination) {
+	function searchHypem() {
+
+		console.log('http://hypem.com/'+ username +'/'+ pagination +'/?ax=1');
 
 		$.ajax({
 			type: 'GET',
@@ -68,7 +166,7 @@ $(window).load(function() {
 			var total_pages = Math.ceil(total_songs / 20);
 
 			//
-			console.log(username + " has " + total_songs + " favorite tracks spread across " + total_pages + " pages");
+			// console.log(username + " has " + total_songs + " favorite tracks spread across " + total_pages + " pages");
 
 			var fragment;
 			var artist_name;
@@ -88,16 +186,23 @@ $(window).load(function() {
 			});
 
 			//
-			if (pagination !== total_pages) searchHypem(username,pagination+1);
+			if (pagination !== total_pages)  {
+				pagination++;
+				searchHypem(username,pagination);
+			}
 
 		})
-		.error(function() { alert("error"); });
+		.error(function(data, textStatus, xhr) {
+
+			console.log(textStatus);
+
+		});
 
 	}
 
 	function searchSpotify(trackquery, artistquery) {
 
-		console.log("Searching for " + trackquery + " by " + artistquery);
+		// console.log("Searching for " + trackquery + " by " + artistquery);
 
 		sp.core.search(trackquery, true, false, { // using "true, false" will include local results if available. no idea what the values represent!
 
@@ -139,12 +244,15 @@ $(window).load(function() {
 					$("#failed-results").append("<div>No results for '" + trackquery + " by " + artistquery + "'</div>");
 
 				}
+				
+				
+				if($('.loading').css('opacity') == 1) {
+					hideLoading();
+				}
 			}
 
 		});
 
 	}
-
-	// searchHypem(username,1);
 
 });
