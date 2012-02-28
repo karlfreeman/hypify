@@ -30,6 +30,9 @@ $(window).load(function() {
 	var username = "";
 	var pagination = 1;
 
+	var asyncCalls = [],  // Initiate for later
+	tempPlaylist = new m.Playlist();
+
 	// Defaults
 	$('.username-prompt').html(sp.core.user.username);
 	$('.form .username-prompt').live('click', usernamePromt);
@@ -123,6 +126,7 @@ $(window).load(function() {
 
 		$('.loading').
 			transition({ opacity: 1, delay: 1200 }, 200, 'in-out', function() {
+				hypemSearching();
 				searchHypem();
 			});
 			
@@ -186,9 +190,11 @@ $(window).load(function() {
 			});
 
 			//
-			if (pagination !== total_pages)  {
+			if (pagination <= total_pages)  {
 				pagination++;
 				searchHypem(username,pagination);
+			} else {
+				hypemSearched();
 			}
 
 		})
@@ -196,6 +202,33 @@ $(window).load(function() {
 
 			console.log(textStatus);
 
+		});
+
+	}
+
+	function hypemSearching() {
+		
+		var playlistArt = new v.Player();
+			playlistArt.context = tempPlaylist;
+			$("#search-results").append(playlistArt.node);
+		
+		var saveButton = "<button id='savePlaylist' class='add-playlist button icon'>Save As Playlist</button>";
+			$("#search-results .sp-player").append(saveButton);
+			$("#search-results .sp-player").css({ opacity: '0.5' });
+		
+		var playlistList = new v.List(tempPlaylist);
+			playlistList.node.classList.add("temporary");
+			$("#search-results").append(playlistList.node);
+
+	}
+
+	function hypemSearched() {
+
+		$("#search-results .sp-player").transition({ opacity: 1 }, 400, 'in-out');
+
+		$("#savePlaylist").live('click',function(e){
+			sp.core.library.createPlaylist("Hypem Tracks", tempPlaylist.data.all());
+			e.preventDefault();
 		});
 
 	}
@@ -229,19 +262,23 @@ $(window).load(function() {
 
 					});
 
+
 					if (trackresult === null) {
 
-						$("#failed-results").append("<div>No results for '" + trackquery + " by " + artistquery + "'</div>");
+						// $("#failed-results").append("<div>No results for '" + trackquery + " by " + artistquery + "'</div>");
 
 					} else {
 
-						$("#search-results").append('<div><a href="'+trackresult.uri+'">'+trackresult.name+'</a> by <a href="'+trackresult.album.artist.uri+'">'+trackresult.album.artist.name+'</a></div>');
+						tempPlaylist.add(m.Track.fromURI(trackresult.uri));
+
+						// $("#search-results").append('<div><a href="'+trackresult.uri+'">'+trackresult.name+'</a> by <a href="'+trackresult.album.artist.uri+'">'+trackresult.album.artist.name+'</a></div>');
+
 
 					}
 
 				} else {
 
-					$("#failed-results").append("<div>No results for '" + trackquery + " by " + artistquery + "'</div>");
+					// $("#failed-results").append("<div>No results for '" + trackquery + " by " + artistquery + "'</div>");
 
 				}
 				
@@ -249,6 +286,7 @@ $(window).load(function() {
 				if($('.loading').css('opacity') == 1) {
 					hideLoading();
 				}
+
 			}
 
 		});

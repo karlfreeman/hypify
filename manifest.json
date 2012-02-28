@@ -1,6 +1,7 @@
 {
 	"BundleType": "Application",
 	"AppIcon": {
+		"18x18": "img/18x18.png",
 		"36x18": "img/36x18.png"
 	},
 	"ApiPermissions" : {

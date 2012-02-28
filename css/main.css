@@ -11,8 +11,6 @@ header {
 	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #255a00), color-stop(1, #7eab00));
 	-webkit-box-shadow: 0px 0px 4px #000;
 	height:60px;
-	
-
 }
 
 header {
@@ -131,6 +129,25 @@ input[type=submit]:active
 	text-shadow: 0 -1px #255a00;
 }
 
+#search-results h2 {
+	margin:10px 0 5px;
+	color: #999;
+	font-weight:bold;
+}
+#search-results .sp-player {
+	float:left;
+	margin-right:10px;
+	margin-left:10px;
+}
+#search-results .add-playlist {
+	margin-top:10px;
+	margin-left:9px;
+}
+#search-results .sp-list {
+	width:inherit;
+	max-height:inherit;
+	margin-top:10px;
+	margin-right:10px;
 }
 
 footer {
