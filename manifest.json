@@ -1,20 +1,27 @@
 {
 	"BundleType": "Application",
-	"AppIcon": {
-		"18x18": "img/18x18.png",
-		"36x18": "img/36x18.png"
+	"BundleIdentifier": "hypify",
+	"BundleVersion": "0.0.1",
+	"AppName": {
+		"en": "Hypify"
 	},
+	"AppIcon": {
+		"36x18": "img/36x18.png",
+		"64x64": "img/64x64.png",
+		"128x128": "img/128x128.png"
+	},
+	"AppURL": "http://www.karlfreeman.co.uk/articles/2012/building-hypify.html",
+	"AppDescription": "Hype Machine cross-referencing playlist creator",
 	"ApiPermissions" : {
 		"core" : ["private"],
 		"social" : ["private"],
 		"playlist" : ["private"]
 	},
-	"AppName": {
-		"en": "Hypify"
-	},
 	"SupportedLanguages": [
 		"en"
 	],
+	"VendorIdentifier": "com.hypify",
+	"RequiredInterface": "1",
 	"RequiredPermissions": [
 		"http://hypem.com",
 		"http://*.spotify.com",
