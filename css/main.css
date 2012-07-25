@@ -1,5 +1,5 @@
-@import url("sp://import/css/api.css");
 @import url("sp://import/css/eve.css");
+@import url("sp://import/css/api.css");
 
 body {
 	min-height: 100%;
@@ -40,12 +40,6 @@ header img {
 
 .wrapper {
 }
-
-/*
-
-Submit Form
-
-*/
 
 .form {
 	position:fixed; top:50%;
